@@ -4,9 +4,11 @@ import { TasksProps } from "../App";
 
 interface TodoListProps {
   task: TasksProps;
+  onDeleteTask(id: string): void;
+  onChangeTask({ id, checked }: { id: string; checked: boolean }): void;
 }
 
-export function TodoList({ task }: TodoListProps) {
+export function TodoList({ task, onDeleteTask, onChangeTask }: TodoListProps) {
   const checkboxCheckedClassname = task.isChecked
     ? styles["checkbox-checked"]
     : styles["checkbox-unchecked"];
@@ -14,9 +16,17 @@ export function TodoList({ task }: TodoListProps) {
     ? styles["paragraph-checked"]
     : "";
 
+  function handleDeleteTask() {
+    onDeleteTask(task.id);
+  }
+
+  function handleChangeTask() {
+    onChangeTask({ id: task.id, checked: !task.isChecked });
+  }
+
   return (
     <div className={styles.container}>
-      <label htmlFor="checkbox">
+      <label htmlFor="checkbox" onClick={handleChangeTask}>
         <input readOnly type="checkbox" checked={task.isChecked} />
         <span className={`${styles.checkbox} ${checkboxCheckedClassname}`}>
           {task.isChecked && (
@@ -28,7 +38,7 @@ export function TodoList({ task }: TodoListProps) {
           {task.title}
         </p>
       </label>
-      <button>
+      <button onClick={handleDeleteTask}>
         <Trash />
       </button>
     </div>

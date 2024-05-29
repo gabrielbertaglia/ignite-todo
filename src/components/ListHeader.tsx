@@ -20,7 +20,10 @@ export function ListHeader({ tasks }: ListHeaderProps) {
       <Paragraph count={tasks.length} type="created">
         Tarefas criadas
       </Paragraph>
-      <Paragraph type="finished" count={`${tasksCompleted} de ${tasks.length}`}>
+      <Paragraph
+        type="finished"
+        count={tasks.length > 0 ? `${tasksCompleted} de ${tasks.length}` : "0"}
+      >
         Concluídas
       </Paragraph>
     </div>

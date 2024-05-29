@@ -50,6 +50,21 @@ function App() {
     setAddNewTask("");
   }
 
+  function onDeleteTask(id: string) {
+    const filterTask = tasks.filter((task) => task.id !== id);
+    setTasks(filterTask);
+  }
+
+  function onChangeTask({ id, checked }: { id: string; checked: boolean }) {
+    const newTasks = tasks.map((task) => {
+      if (task.id === id) {
+        return { ...task, isChecked: checked };
+      }
+      return { ...task };
+    });
+    setTasks(newTasks);
+  }
+
   return (
     <>
       <Header />
@@ -71,7 +86,12 @@ function App() {
           {tasks.length > 0 ? (
             <div className={styles.todoContainerWithTask}>
               {tasks.map((task) => (
-                <TodoList task={task} />
+                <TodoList
+                  key={task.id}
+                  task={task}
+                  onDeleteTask={onDeleteTask}
+                  onChangeTask={onChangeTask}
+                />
               ))}
             </div>
           ) : (

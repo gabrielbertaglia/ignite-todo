@@ -1,0 +1,11 @@
+button {
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  background-color: var(--blue-dark);
+  border-radius: 8px;
+  border: 0;
+  color: var(--gray-100);
+  font-weight: bold;
+  padding-right: 0.5rem;
+}

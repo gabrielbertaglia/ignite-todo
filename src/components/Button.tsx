@@ -1,4 +1,5 @@
 import { PlusCircle } from "@phosphor-icons/react";
+import styles from "./Button.module.css";
 
 interface ButtonProps {
   children: React.ReactNode;
@@ -6,7 +7,7 @@ interface ButtonProps {
 
 export function Button({ children }: ButtonProps) {
   return (
-    <button>
+    <button className={styles.button}>
       {children}&ensp;
       <PlusCircle weight="bold" size={16} />
     </button>

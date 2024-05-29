@@ -28,7 +28,9 @@ export function TodoList({ task }: TodoListProps) {
           {task.title}
         </p>
       </label>
-      <Trash className={styles.trash} />
+      <button>
+        <Trash />
+      </button>
     </div>
   );
 }

@@ -1,0 +1,18 @@
+.created {
+  color: var(--blue);
+  font-weight: bold;
+}
+
+.finished {
+  color: var(--purple);
+  font-weight: bold;
+}
+
+.count {
+  padding: 2px 8px;
+  border-radius: 999px;
+  background-color: var(--gray-400);
+  color: var(--gray-200);
+  font-weight: bold;
+  margin-left: 0.5rem;
+}

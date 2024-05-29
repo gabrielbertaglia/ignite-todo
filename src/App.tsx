@@ -9,6 +9,7 @@ import { Input } from "./components/Input";
 import { ListHeader } from "./components/ListHeader";
 import { Empty } from "./components/Empty";
 import { TodoList } from "./components/TodoList";
+import { ChangeEvent, useState } from "react";
 
 export interface TasksProps {
   id: string;
@@ -16,29 +17,54 @@ export interface TasksProps {
   isChecked: boolean;
 }
 
-const tasks: TasksProps[] = [
-  {
-    id: uuidv4(),
-    title: "Terminar desafio",
-    isChecked: false,
-  },
-  {
-    id: uuidv4(),
-    title: "Terminar desafio",
-    isChecked: true,
-  },
-];
+// const tasks: TasksProps[] = [
+//   {
+//     id: uuidv4(),
+//     title: "Terminar desafio",
+//     isChecked: false,
+//   },
+//   {
+//     id: uuidv4(),
+//     title: "Terminar desafio",
+//     isChecked: true,
+//   },
+// ];
 
 function App() {
-  // const [tasks, setTasks] = useState<TasksProps[]>([]);
+  const [tasks, setTasks] = useState<TasksProps[]>([]);
+  const [addNewTask, setAddNewTask] = useState("");
+
+  function handleChangeAddNewTask(event: ChangeEvent<HTMLInputElement>) {
+    setAddNewTask(event.target.value);
+  }
+
+  function handleCreateTask() {
+    setTasks([
+      ...tasks,
+      {
+        id: uuidv4(),
+        title: addNewTask,
+        isChecked: false,
+      },
+    ]);
+    setAddNewTask("");
+  }
 
   return (
     <>
       <Header />
       <div className={styles.wrapper}>
         <div className={styles.content}>
-          <Input placeholder="Adicione uma nova tarefa" />
-          <Button>Criar</Button>
+          <Input
+            type="text"
+            name="newTask"
+            placeholder="Adicione uma nova tarefa"
+            value={addNewTask}
+            onChange={handleChangeAddNewTask}
+          />
+          <Button disabled={addNewTask.length === 0} onClick={handleCreateTask}>
+            Criar
+          </Button>
         </div>
         <div className={styles.todo}>
           <ListHeader tasks={tasks} />

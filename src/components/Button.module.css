@@ -8,4 +8,8 @@
   color: var(--gray-100);
   font-weight: bold;
   padding-right: 0.5rem;
+
+  &:disabled {
+    cursor: not-allowed;
+  }
 }

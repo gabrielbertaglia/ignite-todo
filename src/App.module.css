@@ -1,8 +1,8 @@
 .wrapper {
-  max-width: 70rem;
-  gap: 2rem;
   align-items: center;
   display: flex;
+  flex-direction: column;
+
   justify-content: center;
 }
 
@@ -25,23 +25,12 @@
   margin-top: calc(0px - 1.5rem - 3px);
 }
 
-.content input {
-  padding: 1rem;
-  border-radius: 8px;
-  border: 0;
-  background-color: var(--gray-500);
-  color: var(--gray-500);
+.todo {
+  padding-top: 4rem;
   width: 100%;
+  max-width: 46rem;
 }
 
-.content button {
-  display: flex;
-  align-items: center;
-  padding: 1rem;
-  background-color: var(--blue-dark);
-  border-radius: 8px;
-  border: 0;
-  color: var(--gray-100);
-  font-weight: bold;
-  padding-right: 0.5rem;
+.todoContainerWithTask {
+  margin: 1.5rem 0;
 }
